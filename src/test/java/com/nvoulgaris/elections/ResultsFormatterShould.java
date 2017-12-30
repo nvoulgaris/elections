@@ -7,26 +7,33 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResultsFormatterShould {
 
-  private ElectionResults electionResults;
+  private ElectionResults results;
   private ResultsFormatter resultsFormatter;
 
   @Before
   public void setUp() throws Exception {
     resultsFormatter = new ResultsFormatter();
-    electionResults = new ElectionResults();
+    results = new ElectionResults();
   }
 
   @Test
   public void formatResultsForTheLeaderBoard() throws Exception {
-    String results = resultsFormatter.formatForLeaderBoard(electionResults);
+    String formattedResults = resultsFormatter.formatForLeaderBoard(results);
 
-    assertThat(results).isEqualTo(Constants.LEADER_BOARD_FORMATTED_RESULTS);
+    assertThat(formattedResults).isEqualTo(Constants.LEADER_BOARD_FORMATTED_RESULTS);
   }
 
   @Test
   public void formatResultsForTheHeatMap() throws Exception {
-    String results = resultsFormatter.formatForHeatMap(electionResults);
+    String formattedResults = resultsFormatter.formatForHeatMap(results);
 
-    assertThat(results).isEqualTo(Constants.HEAT_MAP_FORMATTED_RESULTS);
+    assertThat(formattedResults).isEqualTo(Constants.HEAT_MAP_FORMATTED_RESULTS);
+  }
+
+  @Test
+  public void formatResultsForSwingometer() throws Exception {
+    String formattedResults = resultsFormatter.formatForSwingometer(results);
+
+    assertThat(formattedResults).isEqualTo(Constants.SWINGOMETER_FORMATTED_RESULTS);
   }
 }

@@ -32,7 +32,7 @@ public class LiveDataUpdateFeature {
     resultsFormatter = new ResultsFormatter();
     leaderBoard = new LeaderBoard(console, resultsFormatter);
     heatMap = new HeatMap(console, resultsFormatter);
-    swingometer = new Swingometer();
+    swingometer = new Swingometer(console, resultsFormatter);
   }
 
   @Test

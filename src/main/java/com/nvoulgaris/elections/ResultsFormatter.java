@@ -9,4 +9,8 @@ public class ResultsFormatter {
   public String formatForHeatMap(ElectionResults results) {
     return Constants.HEAT_MAP_FORMATTED_RESULTS;
   }
+
+  public String formatForSwingometer(ElectionResults results) {
+    return Constants.SWINGOMETER_FORMATTED_RESULTS;
+  }
 }

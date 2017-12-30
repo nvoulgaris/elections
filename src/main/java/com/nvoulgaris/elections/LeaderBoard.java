@@ -2,8 +2,8 @@ package com.nvoulgaris.elections;
 
 public class LeaderBoard implements ElectionObserver, Display {
 
-  private ResultsFormatter resultsFormatter;
   private Console console;
+  private ResultsFormatter resultsFormatter;
 
   public LeaderBoard(Console console, ResultsFormatter resultsFormatter) {
     this.console = console;
