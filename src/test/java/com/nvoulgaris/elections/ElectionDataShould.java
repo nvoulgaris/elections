@@ -1,5 +1,8 @@
 package com.nvoulgaris.elections;
 
+import com.nvoulgaris.elections.observables.ElectionData;
+import com.nvoulgaris.elections.observers.HeatMap;
+import com.nvoulgaris.elections.observers.LeaderBoard;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;

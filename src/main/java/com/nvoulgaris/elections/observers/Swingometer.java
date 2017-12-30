@@ -1,5 +1,7 @@
-package com.nvoulgaris.elections;
+package com.nvoulgaris.elections.observers;
 
+import com.nvoulgaris.elections.Console;
+import com.nvoulgaris.elections.ElectionResults;
 import com.nvoulgaris.elections.formatters.SwingometerFormatter;
 
 public class Swingometer extends Display implements ElectionObserver {

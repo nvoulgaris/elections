@@ -1,6 +1,7 @@
 package com.nvoulgaris.elections;
 
 import com.nvoulgaris.elections.formatters.SwingometerFormatter;
+import com.nvoulgaris.elections.observers.Swingometer;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

@@ -1,6 +1,7 @@
 package com.nvoulgaris.elections;
 
 import com.nvoulgaris.elections.formatters.HeatMapFormatter;
+import com.nvoulgaris.elections.observers.HeatMap;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
