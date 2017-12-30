@@ -17,7 +17,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-public class LiveDataUpdateFeature {
+public class LiveDataDisplayFeature {
 
   @Mock Console console;
 
@@ -29,9 +29,7 @@ public class LiveDataUpdateFeature {
   private Swingometer swingometer;
   private ElectionData electionData;
 
-  @Before
-  public void setUp() throws Exception {
-    MockitoAnnotations.initMocks(this);
+  private void initializeObjects() {
     electionData = new ElectionData();
     leaderBoardFormatter = new LeaderBoardFormatter();
     heatMapFormatter = new HeatMapFormatter();
@@ -41,8 +39,14 @@ public class LiveDataUpdateFeature {
     swingometer = new Swingometer(console, swingometerFormatter);
   }
 
+  @Before
+  public void setUp() throws Exception {
+    MockitoAnnotations.initMocks(this);
+    initializeObjects();
+  }
+
   @Test
-  public void updateDisplays() throws Exception {
+  public void shouldUpdateAllDisplaysWhenDataAreUpdated() throws Exception {
     electionData.register(leaderBoard);
     electionData.register(heatMap);
     electionData.register(swingometer);
