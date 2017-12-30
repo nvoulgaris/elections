@@ -8,26 +8,25 @@ import org.mockito.MockitoAnnotations;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class LeaderBoardShould {
+public class HeatMapShould {
 
   @Mock Console console;
-  @Mock ResultsFormatter resultsFormatter;
   @Mock ElectionResults results;
+  @Mock ResultsFormatter resultsFormatter;
 
-  private LeaderBoard leaderBoard;
+  private HeatMap heatMap;
 
   @Before
   public void setUp() throws Exception {
     MockitoAnnotations.initMocks(this);
-    leaderBoard = new LeaderBoard(console, resultsFormatter);
+    heatMap = new HeatMap(console, resultsFormatter);
   }
 
   @Test
   public void displayFreshResultsWhenUpdated() throws Exception {
-    when(resultsFormatter.formatForLeaderBoard(results)).thenReturn(Constants.LEADER_BOARD_FORMATTED_RESULTS);
+    when(resultsFormatter.formatForHeatMap(results)).thenReturn(Constants.HEAT_MAP_FORMATTED_RESULTS);
+    heatMap.update(results);
 
-    leaderBoard.update(results);
-
-    verify(console).printLine(Constants.LEADER_BOARD_FORMATTED_RESULTS);
+    verify(console).printLine(Constants.HEAT_MAP_FORMATTED_RESULTS);
   }
 }
