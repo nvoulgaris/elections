@@ -1,18 +1,15 @@
 package com.nvoulgaris.elections;
 
-public class Swingometer implements ElectionObserver, Display {
+import com.nvoulgaris.elections.formatters.SwingometerFormatter;
 
-  private Console console;
-  private ResultsFormatter resultsFormatter;
+public class Swingometer extends Display implements ElectionObserver {
 
-  public Swingometer(Console console, ResultsFormatter resultsFormatter) {
-    this.resultsFormatter = resultsFormatter;
-    this.console = console;
+  public Swingometer(Console console, SwingometerFormatter resultsFormatter) {
+    super(console, resultsFormatter);
   }
 
   @Override
   public void update(ElectionResults results) {
-    String formattedResults = resultsFormatter.formatForSwingometer(results);
-    console.printLine(formattedResults);
+    printResults(results);
   }
 }

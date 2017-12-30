@@ -1,18 +1,15 @@
 package com.nvoulgaris.elections;
 
-public class HeatMap implements ElectionObserver, Display {
+import com.nvoulgaris.elections.formatters.HeatMapFormatter;
 
-  private Console console;
-  private ResultsFormatter resultsFormatter;
+public class HeatMap extends Display implements ElectionObserver {
 
-  public HeatMap(Console console, ResultsFormatter resultsFormatter) {
-    this.console = console;
-    this.resultsFormatter = resultsFormatter;
+  public HeatMap(Console console, HeatMapFormatter resultsFormatter) {
+    super(console, resultsFormatter);
   }
 
   @Override
   public void update(ElectionResults results) {
-    String formattedResults = resultsFormatter.formatForHeatMap(results);
-    console.printLine(formattedResults);
+    printResults(results);
   }
 }

@@ -1,17 +1,14 @@
 package com.nvoulgaris.elections;
 
-public class LeaderBoard implements ElectionObserver, Display {
+import com.nvoulgaris.elections.formatters.LeaderBoardFormatter;
 
-  private Console console;
-  private ResultsFormatter resultsFormatter;
+public class LeaderBoard extends Display implements ElectionObserver {
 
-  public LeaderBoard(Console console, ResultsFormatter resultsFormatter) {
-    this.console = console;
-    this.resultsFormatter = resultsFormatter;
+  public LeaderBoard(Console console, LeaderBoardFormatter resultsFormatter) {
+    super(console, resultsFormatter);
   }
 
   public void update(ElectionResults results) {
-    String formattedResults = resultsFormatter.formatForLeaderBoard(results);
-    console.printLine(formattedResults);
+    printResults(results);
   }
 }

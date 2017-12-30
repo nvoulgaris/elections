@@ -1,5 +1,6 @@
 package com.nvoulgaris.elections;
 
+import com.nvoulgaris.elections.formatters.LeaderBoardFormatter;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -11,7 +12,7 @@ import static org.mockito.Mockito.when;
 public class LeaderBoardShould {
 
   @Mock Console console;
-  @Mock ResultsFormatter resultsFormatter;
+  @Mock LeaderBoardFormatter resultsFormatter;
   @Mock ElectionResults results;
 
   private LeaderBoard leaderBoard;
@@ -24,7 +25,7 @@ public class LeaderBoardShould {
 
   @Test
   public void displayFreshResultsWhenUpdated() throws Exception {
-    when(resultsFormatter.formatForLeaderBoard(results)).thenReturn(Constants.LEADER_BOARD_FORMATTED_RESULTS);
+    when(resultsFormatter.format(results)).thenReturn(Constants.LEADER_BOARD_FORMATTED_RESULTS);
 
     leaderBoard.update(results);
 

@@ -23,7 +23,7 @@ public class ElectionDataShould {
 
   @Test
   public void notifyRegisteredObserversWhenReadingFreshElectionData() throws Exception {
-    electionData.registerObserver(leaderBoard);
+    electionData.register(leaderBoard);
 
     electionData.resultsChanged(electionResults);
 
@@ -32,8 +32,8 @@ public class ElectionDataShould {
 
   @Test
   public void notifyOnlyRegisteredObserversWhenReadingFreshElectionData() throws Exception {
-    electionData.registerObserver(heatMap);
-    electionData.unregisterObserver(heatMap);
+    electionData.register(heatMap);
+    electionData.unregister(heatMap);
 
     electionData.resultsChanged(electionResults);
 

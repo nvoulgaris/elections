@@ -5,9 +5,11 @@ import com.nvoulgaris.elections.Constants;
 import com.nvoulgaris.elections.ElectionData;
 import com.nvoulgaris.elections.ElectionResults;
 import com.nvoulgaris.elections.HeatMap;
+import com.nvoulgaris.elections.formatters.HeatMapFormatter;
 import com.nvoulgaris.elections.LeaderBoard;
-import com.nvoulgaris.elections.ResultsFormatter;
+import com.nvoulgaris.elections.formatters.LeaderBoardFormatter;
 import com.nvoulgaris.elections.Swingometer;
+import com.nvoulgaris.elections.formatters.SwingometerFormatter;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
@@ -19,7 +21,9 @@ public class LiveDataUpdateFeature {
 
   @Mock Console console;
 
-  private ResultsFormatter resultsFormatter;
+  private LeaderBoardFormatter leaderBoardFormatter;
+  private HeatMapFormatter heatMapFormatter;
+  private SwingometerFormatter swingometerFormatter;
   private LeaderBoard leaderBoard;
   private HeatMap heatMap;
   private Swingometer swingometer;
@@ -29,17 +33,19 @@ public class LiveDataUpdateFeature {
   public void setUp() throws Exception {
     MockitoAnnotations.initMocks(this);
     electionData = new ElectionData();
-    resultsFormatter = new ResultsFormatter();
-    leaderBoard = new LeaderBoard(console, resultsFormatter);
-    heatMap = new HeatMap(console, resultsFormatter);
-    swingometer = new Swingometer(console, resultsFormatter);
+    leaderBoardFormatter = new LeaderBoardFormatter();
+    heatMapFormatter = new HeatMapFormatter();
+    swingometerFormatter = new SwingometerFormatter();
+    leaderBoard = new LeaderBoard(console, leaderBoardFormatter);
+    heatMap = new HeatMap(console, heatMapFormatter);
+    swingometer = new Swingometer(console, swingometerFormatter);
   }
 
   @Test
   public void updateDisplays() throws Exception {
-    electionData.registerObserver(leaderBoard);
-    electionData.registerObserver(heatMap);
-    electionData.registerObserver(swingometer);
+    electionData.register(leaderBoard);
+    electionData.register(heatMap);
+    electionData.register(swingometer);
 
     electionData.resultsChanged(new ElectionResults());
 

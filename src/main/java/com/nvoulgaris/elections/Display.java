@@ -1,6 +1,19 @@
 package com.nvoulgaris.elections;
 
-public interface Display {
+import com.nvoulgaris.elections.formatters.ResultsFormatter;
 
-  void update(ElectionResults results);
+public class Display {
+
+  private Console console;
+  private ResultsFormatter resultsFormatter;
+
+  public Display(Console console, ResultsFormatter resultsFormatter) {
+    this.console = console;
+    this.resultsFormatter = resultsFormatter;
+  }
+
+  void printResults(ElectionResults results) {
+    String formattedResults = resultsFormatter.format(results);
+    console.printLine(formattedResults);
+  }
 }

@@ -11,11 +11,11 @@ public class ElectionData {
     this.observers = new ArrayList<>();
   }
 
-  public void registerObserver(ElectionObserver observer) {
+  public void register(ElectionObserver observer) {
     observers.add(observer);
   }
 
-  public void unregisterObserver(ElectionObserver observer) {
+  public void unregister(ElectionObserver observer) {
     observers.remove(observer);
   }
 

@@ -1,5 +1,6 @@
 package com.nvoulgaris.elections;
 
+import com.nvoulgaris.elections.formatters.SwingometerFormatter;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -12,7 +13,7 @@ public class SwingometerShould {
 
   @Mock Console console;
   @Mock ElectionResults results;
-  @Mock ResultsFormatter resultsFormatter;
+  @Mock SwingometerFormatter resultsFormatter;
 
   private Swingometer swingometer;
 
@@ -24,7 +25,7 @@ public class SwingometerShould {
 
   @Test
   public void displayFreshResultsWhenUpdated() throws Exception {
-    when(resultsFormatter.formatForSwingometer(results)).thenReturn(Constants.SWINGOMETER_FORMATTED_RESULTS);
+    when(resultsFormatter.format(results)).thenReturn(Constants.SWINGOMETER_FORMATTED_RESULTS);
     swingometer.update(results);
 
     verify(console).printLine(Constants.SWINGOMETER_FORMATTED_RESULTS);
