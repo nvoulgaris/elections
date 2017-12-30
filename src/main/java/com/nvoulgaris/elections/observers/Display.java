@@ -1,21 +1,21 @@
 package com.nvoulgaris.elections.observers;
 
-import com.nvoulgaris.elections.Console;
 import com.nvoulgaris.elections.ElectionResults;
+import com.nvoulgaris.elections.ResultsPrinter;
 import com.nvoulgaris.elections.formatters.ResultsFormatter;
 
 public class Display {
 
-  private Console console;
+  private ResultsPrinter resultsPrinter;
   private ResultsFormatter resultsFormatter;
 
-  public Display(Console console, ResultsFormatter resultsFormatter) {
-    this.console = console;
+  public Display(ResultsPrinter resultsPrinter, ResultsFormatter resultsFormatter) {
+    this.resultsPrinter = resultsPrinter;
     this.resultsFormatter = resultsFormatter;
   }
 
-  void printResults(ElectionResults results) {
+  void display(ElectionResults results) {
     String formattedResults = resultsFormatter.format(results);
-    console.printLine(formattedResults);
+    resultsPrinter.print(formattedResults);
   }
 }

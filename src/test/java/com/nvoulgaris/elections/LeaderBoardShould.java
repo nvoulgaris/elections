@@ -12,7 +12,7 @@ import static org.mockito.Mockito.when;
 
 public class LeaderBoardShould {
 
-  @Mock Console console;
+  @Mock ResultsPrinter resultsPrinter;
   @Mock LeaderBoardFormatter resultsFormatter;
   @Mock ElectionResults results;
 
@@ -21,7 +21,7 @@ public class LeaderBoardShould {
   @Before
   public void setUp() throws Exception {
     MockitoAnnotations.initMocks(this);
-    leaderBoard = new LeaderBoard(console, resultsFormatter);
+    leaderBoard = new LeaderBoard(resultsPrinter, resultsFormatter);
   }
 
   @Test
@@ -30,6 +30,6 @@ public class LeaderBoardShould {
 
     leaderBoard.update(results);
 
-    verify(console).printLine(Constants.LEADER_BOARD_FORMATTED_RESULTS);
+    verify(resultsPrinter).print(Constants.LEADER_BOARD_FORMATTED_RESULTS);
   }
 }

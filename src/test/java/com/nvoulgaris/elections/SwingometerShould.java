@@ -12,7 +12,7 @@ import static org.mockito.Mockito.when;
 
 public class SwingometerShould {
 
-  @Mock Console console;
+  @Mock ResultsPrinter resultsPrinter;
   @Mock ElectionResults results;
   @Mock SwingometerFormatter resultsFormatter;
 
@@ -21,7 +21,7 @@ public class SwingometerShould {
   @Before
   public void setUp() throws Exception {
     MockitoAnnotations.initMocks(this);
-    swingometer = new Swingometer(console, resultsFormatter);
+    swingometer = new Swingometer(resultsPrinter, resultsFormatter);
   }
 
   @Test
@@ -29,6 +29,6 @@ public class SwingometerShould {
     when(resultsFormatter.format(results)).thenReturn(Constants.SWINGOMETER_FORMATTED_RESULTS);
     swingometer.update(results);
 
-    verify(console).printLine(Constants.SWINGOMETER_FORMATTED_RESULTS);
+    verify(resultsPrinter).print(Constants.SWINGOMETER_FORMATTED_RESULTS);
   }
 }

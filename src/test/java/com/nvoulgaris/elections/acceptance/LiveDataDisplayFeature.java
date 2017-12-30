@@ -2,6 +2,7 @@ package com.nvoulgaris.elections.acceptance;
 
 import com.nvoulgaris.elections.Console;
 import com.nvoulgaris.elections.Constants;
+import com.nvoulgaris.elections.ResultsPrinter;
 import com.nvoulgaris.elections.observables.ElectionData;
 import com.nvoulgaris.elections.ElectionResults;
 import com.nvoulgaris.elections.observers.HeatMap;
@@ -21,6 +22,7 @@ public class LiveDataDisplayFeature {
 
   @Mock Console console;
 
+  private ResultsPrinter resultsPrinter;
   private LeaderBoardFormatter leaderBoardFormatter;
   private HeatMapFormatter heatMapFormatter;
   private SwingometerFormatter swingometerFormatter;
@@ -34,9 +36,10 @@ public class LiveDataDisplayFeature {
     leaderBoardFormatter = new LeaderBoardFormatter();
     heatMapFormatter = new HeatMapFormatter();
     swingometerFormatter = new SwingometerFormatter();
-    leaderBoard = new LeaderBoard(console, leaderBoardFormatter);
-    heatMap = new HeatMap(console, heatMapFormatter);
-    swingometer = new Swingometer(console, swingometerFormatter);
+    resultsPrinter = new ResultsPrinter(console);
+    leaderBoard = new LeaderBoard(resultsPrinter, leaderBoardFormatter);
+    heatMap = new HeatMap(resultsPrinter, heatMapFormatter);
+    swingometer = new Swingometer(resultsPrinter, swingometerFormatter);
   }
 
   @Before

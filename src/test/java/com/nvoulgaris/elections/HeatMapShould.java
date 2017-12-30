@@ -12,7 +12,7 @@ import static org.mockito.Mockito.when;
 
 public class HeatMapShould {
 
-  @Mock Console console;
+  @Mock ResultsPrinter resultsPrinter;
   @Mock ElectionResults results;
   @Mock HeatMapFormatter resultsFormatter;
 
@@ -21,7 +21,7 @@ public class HeatMapShould {
   @Before
   public void setUp() throws Exception {
     MockitoAnnotations.initMocks(this);
-    heatMap = new HeatMap(console, resultsFormatter);
+    heatMap = new HeatMap(resultsPrinter, resultsFormatter);
   }
 
   @Test
@@ -29,6 +29,6 @@ public class HeatMapShould {
     when(resultsFormatter.format(results)).thenReturn(Constants.HEAT_MAP_FORMATTED_RESULTS);
     heatMap.update(results);
 
-    verify(console).printLine(Constants.HEAT_MAP_FORMATTED_RESULTS);
+    verify(resultsPrinter).print(Constants.HEAT_MAP_FORMATTED_RESULTS);
   }
 }
