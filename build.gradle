@@ -13,7 +13,6 @@ repositories {
 dependencies {
     compile(
             [group: 'org.apache.maven.plugins', name: 'maven-compiler-plugin', version: '3.7.0']
-
     )
 
     testCompile(

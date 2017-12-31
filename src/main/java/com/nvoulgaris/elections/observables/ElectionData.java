@@ -26,11 +26,15 @@ public class ElectionData implements ElectionObservable {
 
   @Override
   public void notifyObservers() {
-    observers.forEach(o -> o.update(results));
+    observers.forEach(o -> o.update(this));
   }
 
   public void resultsChanged(ElectionResults results) {
     this.results = results;
     notifyObservers();
+  }
+
+  public ElectionResults getResults() {
+    return results;
   }
 }

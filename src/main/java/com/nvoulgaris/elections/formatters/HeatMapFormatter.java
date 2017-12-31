@@ -7,6 +7,13 @@ public class HeatMapFormatter implements ResultsFormatter {
 
   @Override
   public String format(ElectionResults results) {
-    return Constants.HEAT_MAP_FORMATTED_RESULTS;
+    return new StringBuilder()
+        .append(Constants.HEAT_MAP_FORMATTED_RESULTS)
+        .append(Constants.BLUE_SCORE_TAG)
+        .append(results.getBlueVotes())
+        .append(Constants.HEAT_MAP_DELIMITER)
+        .append(Constants.ORANGE_SCORE_TAG)
+        .append(results.getOrangeVotes())
+        .toString();
   }
 }

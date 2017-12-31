@@ -1,8 +1,8 @@
 package com.nvoulgaris.elections.observers;
 
-import com.nvoulgaris.elections.ElectionResults;
+import com.nvoulgaris.elections.observables.ElectionData;
 
 public interface ElectionObserver {
 
-  void update(ElectionResults results);
+  void update(ElectionData data);
 }

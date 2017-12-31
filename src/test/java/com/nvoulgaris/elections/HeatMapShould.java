@@ -1,6 +1,7 @@
 package com.nvoulgaris.elections;
 
 import com.nvoulgaris.elections.formatters.HeatMapFormatter;
+import com.nvoulgaris.elections.observables.ElectionData;
 import com.nvoulgaris.elections.observers.HeatMap;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +13,7 @@ import static org.mockito.Mockito.when;
 
 public class HeatMapShould {
 
+  @Mock ElectionData electionData;
   @Mock ResultsPrinter resultsPrinter;
   @Mock ElectionResults results;
   @Mock HeatMapFormatter resultsFormatter;
@@ -26,8 +28,9 @@ public class HeatMapShould {
 
   @Test
   public void displayFreshResultsWhenUpdated() throws Exception {
+    when(electionData.getResults()).thenReturn(results);
     when(resultsFormatter.format(results)).thenReturn(Constants.HEAT_MAP_FORMATTED_RESULTS);
-    heatMap.update(results);
+    heatMap.update(electionData);
 
     verify(resultsPrinter).print(Constants.HEAT_MAP_FORMATTED_RESULTS);
   }

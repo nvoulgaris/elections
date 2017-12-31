@@ -5,7 +5,6 @@ import com.nvoulgaris.elections.observers.HeatMap;
 import com.nvoulgaris.elections.observers.LeaderBoard;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -17,11 +16,12 @@ public class ElectionDataShould {
   @Mock ElectionResults electionResults;
   @Mock LeaderBoard leaderBoard;
   @Mock HeatMap heatMap;
-  @InjectMocks private ElectionData electionData;
+  private ElectionData electionData;
 
   @Before
   public void setUp() throws Exception {
     MockitoAnnotations.initMocks(this);
+    electionData = new ElectionData();
   }
 
   @Test
@@ -30,7 +30,7 @@ public class ElectionDataShould {
 
     electionData.resultsChanged(electionResults);
 
-    verify(leaderBoard).update(electionResults);
+    verify(leaderBoard).update(electionData);
   }
 
   @Test
@@ -40,6 +40,6 @@ public class ElectionDataShould {
 
     electionData.resultsChanged(electionResults);
 
-    verify(heatMap, never()).update(electionResults);
+    verify(heatMap, never()).update(electionData);
   }
 }

@@ -20,6 +20,10 @@ import org.mockito.MockitoAnnotations;
 
 public class LiveDataDisplayFeature {
 
+  private static final String LEADER_BOARD_SCORE = Constants.LEADER_BOARD_FORMATTED_RESULTS + Constants.BLUE_SCORE_TAG + "40" + Constants.LEADER_BOARD_DELIMITER + Constants.ORANGE_SCORE_TAG + "60";
+  private static final String HEAT_MAP_SCORE = Constants.HEAT_MAP_FORMATTED_RESULTS + Constants.BLUE_SCORE_TAG + "40" + Constants.HEAT_MAP_DELIMITER + Constants.ORANGE_SCORE_TAG + "60";
+  private static final String SWINGOMETER_SCORE = Constants.SWINGOMETER_FORMATTED_RESULTS + Constants.BLUE_SCORE_TAG + "40" + Constants.SWINGOMETER_DELIMITER + Constants.ORANGE_SCORE_TAG + "60";
+
   @Mock Console console;
 
   private ResultsPrinter resultsPrinter;
@@ -54,11 +58,14 @@ public class LiveDataDisplayFeature {
     electionData.register(heatMap);
     electionData.register(swingometer);
 
-    electionData.resultsChanged(new ElectionResults());
+    ElectionResults results = new ElectionResults();
+    results.setBlueVotes(40);
+    results.setOrangeVotes(60);
+    electionData.resultsChanged(results);
 
     InOrder inOrder = Mockito.inOrder(console);
-    inOrder.verify(console).printLine(Constants.LEADER_BOARD_FORMATTED_RESULTS);
-    inOrder.verify(console).printLine(Constants.HEAT_MAP_FORMATTED_RESULTS);
-    inOrder.verify(console).printLine(Constants.SWINGOMETER_FORMATTED_RESULTS);
+    inOrder.verify(console).printLine(LEADER_BOARD_SCORE);
+    inOrder.verify(console).printLine(HEAT_MAP_SCORE);
+    inOrder.verify(console).printLine(SWINGOMETER_SCORE);
   }
 }

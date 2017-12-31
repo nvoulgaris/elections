@@ -7,6 +7,13 @@ public class LeaderBoardFormatter implements ResultsFormatter {
 
   @Override
   public String format(ElectionResults results) {
-    return Constants.LEADER_BOARD_FORMATTED_RESULTS;
+    return new StringBuilder()
+        .append(Constants.LEADER_BOARD_FORMATTED_RESULTS)
+        .append(Constants.BLUE_SCORE_TAG)
+        .append(results.getBlueVotes())
+        .append(Constants.LEADER_BOARD_DELIMITER)
+        .append(Constants.ORANGE_SCORE_TAG)
+        .append(results.getOrangeVotes())
+        .toString();
   }
 }
