@@ -1,6 +1,6 @@
-# Overiview
+# Overview
 
-A elections application. A TV station need to keep track of the results as they arrive.
+An elections application. A TV station need to keep track of the results as they arrive.
 
 # Specs
 
